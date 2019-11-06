@@ -1,0 +1,66 @@
+<mdb-navbar SideClass="navbar navbar-expand-lg" mdbFixedHeader>
+
+    <mdb-navbar-brand class="m-auto">
+        <a class="navbar-brand" href="#">
+            10Pearls
+        </a>
+    </mdb-navbar-brand>
+
+</mdb-navbar>
+
+<div class="container pt-5">
+    <div class="row">
+
+        <div class="col-lg-4 col-md-6 mr-auto ml-auto">
+
+            <mdb-card>
+
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <h4>Sign in</h4>
+                    </mdb-card-title>
+
+                    <div class="divider dropdown-divider"></div>
+
+                    <form [formGroup]="signinForm" (submit)="signIn()" novalidate autocomplete="off">
+
+                        <div class="md-form">
+                            <label for="username">Username *</label>
+                            <input id="username" mdbInput mdbValidate [validateError]="submitted" type="text"
+                                class="form-control" formControlName="username">
+
+                            <mdb-error *ngIf="submitted && !fields.username.valid">
+                                <span *ngIf="fields.username.errors.required">{{formErrorMsgs.REQUIRED_ERROR}}</span>
+                                <span *ngIf="fields.username.errors.maxlength">
+                                    {{formErrorMsgs.MAX_LENGTH_ERROR}}
+                                    {{fields.username.errors.maxlength.requiredLength}}
+                                </span>
+                            </mdb-error>
+
+                        </div>
+
+                        <div class="md-form">
+                            <label for="password">Password *</label>
+                            <input id="password" mdbInput mdbValidate [validateError]="submitted" type="password"
+                                class="form-control" formControlName="password">
+
+                            <mdb-error *ngIf="submitted && !fields.password.valid">
+                                <span *ngIf="fields.password.errors.required">{{formErrorMsgs.REQUIRED_ERROR}}</span>
+                                <span *ngIf="fields.password.errors.maxlength">
+                                    {{formErrorMsgs.MAX_LENGTH_ERROR}}
+                                    {{fields.password.errors.maxlength.requiredLength}}
+                                </span>
+                            </mdb-error>
+                        </div>
+
+                        <button mdbBtn class="btn-block mt-5" color="primary" type="submit" mdbWavesEffect>Sign
+                            in</button>
+                    </form>
+                </mdb-card-body>
+
+            </mdb-card>
+
+        </div>
+
+    </div>
+</div>
