@@ -1,0 +1,141 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100">Save Client</h4>
+    </div>
+    <form [formGroup]="clientForm" (submit)="saveClient()" autocomplete="off">
+        <div class="modal-body">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form mt-0">
+                            <label for="nit">Nit *</label>
+                            <input id="nit" mdbInput mdbValidate [validateError]="submitted" type="text"
+                                class="form-control" formControlName="nit">
+
+                            <mdb-error *ngIf="submitted && !fields.nit.valid">
+                                <span *ngIf="fields.nit.errors.required"> {{formErrorMsgs.REQUIRED_ERROR}} </span>
+                                <span *ngIf="fields.nit.errors.maxlength">
+                                    {{formErrorMsgs.MAX_LENGTH_ERROR}}
+                                    {{fields.name.errors.maxlength.requiredLength}}
+                                </span>
+                            </mdb-error>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form mt-0">
+                            <label for="name">Name *</label>
+                            <input id="name" mdbInput mdbValidate [validateError]="submitted" type="text"
+                                class="form-control" formControlName="name">
+
+                            <mdb-error *ngIf="submitted && !fields.name.valid">
+                                <span *ngIf="fields.name.errors.required"> {{formErrorMsgs.REQUIRED_ERROR}} </span>
+                                <span *ngIf="fields.name.errors.maxlength">
+                                    {{formErrorMsgs.MAX_LENGTH_ERROR}}
+                                    {{fields.name.errors.maxlength.requiredLength}}
+                                </span>
+                            </mdb-error>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form mt-0">
+                            <label for="phone">Phone Number *</label>
+                            <input id="phone" mdbInput mdbValidate [validateError]="submitted" type="text"
+                                class="form-control" formControlName="phone">
+
+                            <mdb-error *ngIf="submitted && !fields.phone.valid">
+                                <span *ngIf="fields.phone.errors.required"> {{formErrorMsgs.REQUIRED_ERROR}} </span>
+                                <span *ngIf="fields.phone.errors.pattern"> {{formErrorMsgs.PHONE_PATTERN}} </span>
+                                <span *ngIf="fields.phone.errors.maxlength">
+                                    {{formErrorMsgs.MAX_LENGTH_ERROR}}
+                                    {{fields.phoneNumber.errors.maxlength.requiredLength}}
+                                </span>
+                            </mdb-error>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col">
+                        <div class="md-form mt-0">
+                            <label for="city">City *</label>
+                            <input id="cityName" mdbInput mdbValidate [validateError]="submitted" type="text"
+                                class="form-control bg-light" formControlName="cityName" readonly>
+
+                            <mdb-error *ngIf="submitted && !fields.cityName.valid">
+                                <span *ngIf="fields.cityName.errors.required"> {{formErrorMsgs.REQUIRED_ERROR}} </span>
+                                <span *ngIf="fields.cityName.errors.maxlength">
+                                    {{formErrorMsgs.MAX_LENGTH_ERROR}}
+                                    {{fields.city.errors.maxlength.requiredLength}}
+                                </span>
+                            </mdb-error>
+                        </div>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="button" mdbBtn color="success" class="mt-0" (click)="selectCity()">
+                            <mdb-icon fas icon="search"></mdb-icon>
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form mt-0">
+                            <label for="address">Address *</label>
+                            <input id="address" mdbInput mdbValidate [validateError]="submitted" type="text"
+                                class="form-control" formControlName="address">
+
+                            <mdb-error *ngIf="submitted && !fields.address.valid">
+                                <span *ngIf="fields.address.errors.required"> {{formErrorMsgs.REQUIRED_ERROR}} </span>
+                                <span *ngIf="fields.address.errors.maxlength">
+                                    {{formErrorMsgs.MAX_LENGTH_ERROR}}
+                                    {{fields.address.errors.maxlength.requiredLength}}
+                                </span>
+                            </mdb-error>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form mt-0">
+                            <label for="maximumAmount">Credit Limit *</label>
+                            <input id="maximumAmount" mdbInput mdbValidate [validateError]="submitted" type="text"
+                                class="form-control" formControlName="maximumAmount">
+
+                            <mdb-error *ngIf="submitted && !fields.maximumAmount.valid">
+                                <span *ngIf="fields.maximumAmount.errors.required">
+                                    {{formErrorMsgs.REQUIRED_ERROR}}
+                                </span>
+                                <span *ngIf="fields.maximumAmount.errors.pattern">
+                                    {{formErrorMsgs.NUMBER_PATTERN}}
+                                </span>
+                            </mdb-error>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" mdbBtn color="light" class="waves-light" aria-label="Close" (click)="close()"
+                mdbWavesEffect>Cancel</button>
+            <button type="submit" mdbBtn color="success" class="relative waves-light" mdbWavesEffect>Save</button>
+        </div>
+
+    </form>
+</div>

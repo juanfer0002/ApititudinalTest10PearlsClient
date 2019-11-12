@@ -1,0 +1,44 @@
+<div class="container mt-5">
+
+    <div class="row mb-4">
+        <h3 class="mx-auto"> Clients </h3>
+    </div>
+
+    <div class="row">
+        <button mdbBtn class="btn" color="success" size="sm" mdbWavesEffect (click)="openSaveModal()">
+            <mdb-icon fas icon="plus"></mdb-icon>
+        </button>
+    </div>
+
+    <div class="row">
+        <div class="table-responsive m-1">
+
+            <table class="table table-bordered">
+                <thead class="primary-color white-text">
+                    <tr>
+                        <th scope="col" style="min-width: 120px;">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Credit Limit</th>
+                        <th scope="col">Available amount</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr mdbTableCol *ngFor="let client of clients">
+                        <td scope="row"> {{client.name}} </td>
+                        <td scope="row"> {{client.phone}}</td>
+                        <td scope="row"> {{client.maximumAmount | currency}} </td>
+                        <td scope="row"> {{ (client.maximumAmount - client.assignedCredit) | currency}} </td>
+                        <td scope="row" class="text-center">
+                            <mdb-icon fas icon="edit" (click)="openSaveModal(client)"></mdb-icon>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+</div>

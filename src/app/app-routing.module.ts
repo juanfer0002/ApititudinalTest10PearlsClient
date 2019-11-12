@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { SigninComponent } from './components/signin/signin.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ClientsComponent } from './components/clients/clients.component';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: 'signin', pathMatch: 'full' },
-    { path: 'signin', component: SigninComponent },
+    { path: '', redirectTo: 'clients', pathMatch: 'full' },
+    { path: 'clients', component: ClientsComponent },
 
     // Redirect to dashboard unkown routes
-    { path: '**', redirectTo: 'dashboard' },
+    { path: '**', redirectTo: 'clients' },
 ];
 
 @NgModule({

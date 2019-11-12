@@ -15,7 +15,6 @@ import { NotifierModule, NotifierOptions } from 'angular-notifier';
 import { HttpConfigInterceptor } from './shared/http-interceptor/http-config-interceptor';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SigninComponent } from './components/signin/signin.component';
 import { AlertModalComponent } from './shared/components/alert-modal/alert-modal.component';
 
 import { AuthService } from './shared/services/auth.service';
@@ -24,6 +23,12 @@ import { LoadingScreen } from './shared/utils/loading-screen.utils';
 import { Alert } from './shared/utils/alert.utils';
 import { Modal } from './shared/utils/modal.utils';
 import { LoadingScreenComponent } from './shared/components/loading-screen/loading-screen.component';
+import { ClientsComponent } from './components/clients/clients.component';
+import { CountryService } from './services/country.service';
+import { DepartmentService } from './services/department.service';
+import { ClientService } from './services/clients.service';
+import { SaveClientComponent } from './components/clients/modal/save-client/save-client.component';
+import { CitySelectorComponent } from './components/city-selector/city-selector.component';
 
 
 const NOTIFIER_CONFIG: NotifierOptions = {
@@ -39,9 +44,11 @@ const NOTIFIER_CONFIG: NotifierOptions = {
     declarations: [
         AppComponent,
         NavbarComponent,
-        SigninComponent,
         AlertModalComponent,
-        LoadingScreenComponent
+        LoadingScreenComponent,
+        CitySelectorComponent,
+        ClientsComponent,
+        SaveClientComponent
     ],
     imports: [
         BrowserModule,
@@ -55,12 +62,17 @@ const NOTIFIER_CONFIG: NotifierOptions = {
     ],
     entryComponents: [
         AlertModalComponent,
+        CitySelectorComponent,
+        SaveClientComponent,
     ],
     providers: [
         AuthService,
         LoadingScreen,
         Alert,
         Modal,
+        CountryService,
+        DepartmentService,
+        ClientService,
         { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     ],
     bootstrap: [AppComponent]
