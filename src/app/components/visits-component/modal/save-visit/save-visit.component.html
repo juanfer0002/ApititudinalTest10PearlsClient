@@ -31,7 +31,7 @@
                             <select id="representativeDTO" mdbInput mdbValidate [validateError]="submitted" type="text"
                                 class="form-control" formControlName="representativeDTO">
                                 <option [ngValue]="null" selected>Select</option>
-                                <option *ngFor="let r of representatives" [ngValue]="r">{{c.name}}</option>
+                                <option *ngFor="let r of representatives" [ngValue]="r">{{r.name}}</option>
                             </select>
 
                             <mdb-error style="position: initial;" *ngIf="submitted && !fields.representativeDTO.valid">
@@ -63,7 +63,7 @@
                         <div class="md-form mt-0">
                             <label for="total">Total *</label>
                             <input id="total" mdbInput mdbValidate [validateError]="submitted" type="text"
-                                class="form-control" formControlName="total" readonly>
+                                class="form-control bg-light" formControlName="total" readonly>
 
                             <mdb-error *ngIf="submitted && !fields.total.valid">
                                 <span *ngIf="fields.total.errors.required"> {{formErrorMsgs.REQUIRED_ERROR}} </span>

@@ -31,25 +31,32 @@ export class VisitsComponentComponent implements OnInit {
     ngOnInit() {
         this.clientId = +this.route.snapshot.paramMap.get('id');
 
-        this.loadClient();
-        this.loadVisits();
+        if (this.clientId) {
+            this.loadClient();
+            this.loadVisits();
+        } else {
+            this.goBackToClients();
+        }
     }
+
 
     async loadClient() {
         this.client = await this.clientService.getById(this.clientId).toPromise();
+        !this.client && this.goBackToClients();
+    }
 
-        if (!this.client) {
-            this.alert.popError('Client doesn\'t exist anymore.');
-            this.router.navigate(['clients']);
-        }
+    goBackToClients() {
+        this.alert.popError('Client is not valid');
+        this.router.navigate(['clients']);
+
     }
 
     async loadVisits() {
         this.visits = await this.clientService.getClientVisits(this.clientId).toPromise();
     }
 
-    openSaveModal(visit?: Visit) {
-        const modalOpts = { data: { visit, client: this.client } };
+    openSaveModal() {
+        const modalOpts = { data: { client: this.client } };
         const openModal = this.modal.show(SaveVisitComponent, modalOpts);
 
         openModal.content.action.subscribe(async (saved: boolean) => {

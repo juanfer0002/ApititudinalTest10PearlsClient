@@ -4,6 +4,35 @@
         <h3 class="mx-auto"> Visits </h3>
     </div>
 
+    <div class="row mb-4">
+        <div class="col col-4">
+            <mdb-card *ngIf="client">
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <h4>Client: {{client.name}} </h4>
+                    </mdb-card-title>
+                    <mdb-card-text class="text-normal">
+                        <label class="d-block">
+                            <strong class="mr-2">Phone: </strong> {{client.phone}}
+                        </label>
+                        <label class="d-block">
+                            <strong class="mr-2">Credit Limit: </strong> {{client.maximumAmount | currency}}
+                        </label>
+                        <label class="d-block">
+                            <strong class="mr-2">Available Credit: </strong>
+                            {{(client.maximumAmount - client.assignedCredit) | currency}}
+                        </label>
+                        <label class="d-block">
+                            <strong class="mr-2">Visit Percentage: </strong> {{(client.visitsPercenage ) | percent}}
+                        </label>
+                    </mdb-card-text>
+                </mdb-card-body>
+            </mdb-card>
+        </div>
+    </div>
+
+
+
     <div class="row">
         <button mdbBtn class="btn" color="success" size="sm" mdbWavesEffect (click)="openSaveModal()">
             <mdb-icon fas icon="plus"></mdb-icon>
@@ -26,14 +55,10 @@
                 <tbody>
                     <tr mdbTableCol *ngFor="let visit of visits">
                         <td scope="row"> {{visit.date}} </td>
-                        <td scope="row"> {{visit.representative.name}}</td>
+                        <td scope="row"> {{visit.representativeDTO.name}}</td>
                         <td scope="row"> {{visit.net | currency}} </td>
                         <td scope="row"> {{ visit.total | currency}} </td>
                         <td scope="row" class="text-center">
-                            <a (click)="openSaveModal(visit)" mdbTooltip="Edit">
-                                <mdb-icon fas icon="edit" class="text-primary ml-2">
-                                </mdb-icon>
-                            </a>
                             <a (click)="deleteVisit(visit.id)" mdbTooltip="Delete">
                                 <mdb-icon fas icon="trash" class="text-danger ml-2"></mdb-icon>
                             </a>

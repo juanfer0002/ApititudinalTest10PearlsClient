@@ -27,9 +27,6 @@ export class SaveVisitComponent implements OnInit, OnDestroy {
     submitted = false;
     visitForm: FormGroup;
 
-    @Input() // Populated by MD Modal
-    visit: Visit;
-
     @Input()
     client: Client;
 
@@ -56,7 +53,6 @@ export class SaveVisitComponent implements OnInit, OnDestroy {
             total: new FormControl(''),
         });
 
-        this.visit && this.visitForm.patchValue(this.visit);
     }
 
     async loadRepresentatives() {
