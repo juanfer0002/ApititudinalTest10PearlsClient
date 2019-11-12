@@ -9,17 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-    isUserLogged = false;
-
-    constructor(private router: Router) {
-        // TODO: advance
-        let token = sessionStorage.getItem(TOKEN_KEY);
-        this.isUserLogged = !!token;
-
-        if (this.isUserLogged) {
-            this.router.navigate(['main']);
-        }
+    constructor() {
     }
-
 
 }

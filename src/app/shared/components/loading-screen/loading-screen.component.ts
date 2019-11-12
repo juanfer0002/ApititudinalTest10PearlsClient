@@ -1,21 +1,21 @@
-import { Component, OnDestroy, OnInit, } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit, } from '@angular/core';
 
-import { Subscription } from "rxjs";
+import { Subscription } from 'rxjs';
 
 import { LoadingScreen } from '../../utils/loading-screen.utils';
-import { debounceTime } from "rxjs/operators";
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
     selector: 'app-loading-screen',
     templateUrl: './loading-screen.component.html',
     styleUrls: ['./loading-screen.component.scss']
 })
-export class LoadingScreenComponent implements OnInit, OnDestroy {
+export class LoadingScreenComponent implements OnInit, OnDestroy, AfterViewInit {
 
-    loading: boolean = false;
+    loading = false;
     loadingSubscription: Subscription;
 
-    constructor(private LoadingScreen: LoadingScreen) {
+    constructor(private loadingScreen: LoadingScreen) {
     }
 
     ngOnInit() {
@@ -23,7 +23,7 @@ export class LoadingScreenComponent implements OnInit, OnDestroy {
     }
 
     ngAfterViewInit() {
-        this.loadingSubscription = this.LoadingScreen.loadingStatus.pipe(
+        this.loadingSubscription = this.loadingScreen.loadingStatus.pipe(
             debounceTime(200)
         ).subscribe((value) => {
             this.loading = value;

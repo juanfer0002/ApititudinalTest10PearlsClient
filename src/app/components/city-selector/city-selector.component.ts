@@ -88,7 +88,7 @@ export class CitySelectorComponent implements OnInit, OnDestroy {
 
     async setCity() {
 
-        this.submitted = true
+        this.submitted = true;
         this.cityForm.markAllAsTouched();
 
         if (this.cityForm.valid) {

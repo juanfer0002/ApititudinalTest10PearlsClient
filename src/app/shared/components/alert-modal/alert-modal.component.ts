@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { MDBModalRef } from 'angular-bootstrap-md';
 import { Subject } from 'rxjs';
 
@@ -8,21 +8,21 @@ export interface IAlertDialogAction {
 }
 
 export interface IAlertDialogOptions {
-    title: String;
-    body: String;
+    title: string;
+    body: string;
     actions?: IAlertDialogAction[];
 }
 
 const DEFAULT_ACTIONS: IAlertDialogAction[] = [{
     text: 'Ok',
     value: 'ok'
-}]
+}];
 
 @Component({
     selector: 'app-alert-modal',
     templateUrl: './alert-modal.component.html'
 })
-export class AlertModalComponent implements OnInit {
+export class AlertModalComponent implements OnInit, OnDestroy {
 
     action: Subject<any> = new Subject();
 

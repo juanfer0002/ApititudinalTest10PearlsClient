@@ -10,7 +10,7 @@ import { LoadingScreen } from '../utils/loading-screen.utils';
 @Injectable()
 export class HttpConfigInterceptor implements HttpInterceptor {
 
-    activeRequests: number = 0;
+    activeRequests = 0;
 
     constructor(
         private alert: Alert,
@@ -57,7 +57,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
     }
 
     handleError(error: HttpErrorResponse) {
-        let status = error.status;
+        const status = error.status;
 
         switch (status) {
             case 401:

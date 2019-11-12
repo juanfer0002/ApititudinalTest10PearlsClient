@@ -128,6 +128,25 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col">
+                        <div class="md-form mt-0">
+                            <label for="visitsPercenage">Visits Percentage *</label>
+                            <input id="visitsPercenage" mdbInput mdbValidate [validateError]="submitted" type="text"
+                                class="form-control" formControlName="visitsPercenage">
+
+                            <mdb-error *ngIf="submitted && !fields.visitsPercenage.valid">
+                                <span *ngIf="fields.visitsPercenage.errors.required">
+                                    {{formErrorMsgs.REQUIRED_ERROR}}
+                                </span>
+                                <span *ngIf="fields.visitsPercenage.errors.pattern">
+                                    {{formErrorMsgs.NUMBER_PATTERN}}
+                                </span>
+                            </mdb-error>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 

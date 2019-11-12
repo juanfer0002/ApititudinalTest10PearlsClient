@@ -1,6 +1,8 @@
-export const NUMBER_PATTERN = /^(\d*\.)?\d+$/
-export const PHONE_PATTERN = /^(\(\d+\))?(\s?\d+\s?)+$/
-export const INTEGER_PATTERN = /^\d*$/
+import { IAlertDialogOptions } from '../components/alert-modal/alert-modal.component';
+
+export const NUMBER_PATTERN = /^(\d*\.)?\d+$/;
+export const PHONE_PATTERN = /^(\(\d+\))?(\s?\d+\s?)+$/;
+export const INTEGER_PATTERN = /^\d*$/;
 
 export const FORM_ERROR_MSGS = {
     REQUIRED_ERROR: 'This is field is required',
@@ -12,5 +14,20 @@ export const FORM_ERROR_MSGS = {
 };
 
 export const CLIENT_MSGS = {
-    SUCCESS: "Client data has been saved successfully."
-}
+    SAVE_SUCESS: 'Client data has been saved successfully.',
+    DELETE_SUCCESS: 'Client\'s data has been deleted successfully.'
+};
+
+export const VISIT_MSGS = {
+    SAVE_SUCESS: 'Visit has been saved successfully.',
+    DELETE_SUCCESS: 'Visit has been deleted successfully.'
+};
+
+export const DELETE_DIALOG_OPTS: IAlertDialogOptions = {
+    title: 'Delete',
+    body: 'Are you sure you want to delete this item?',
+    actions: [
+        { text: 'Cancel', value: false },
+        { text: 'Yes', value: true },
+    ]
+};

@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { Client } from 'src/app/model/client';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FORM_ERROR_MSGS, CLIENT_MSGS, PHONE_PATTERN, INTEGER_PATTERN, NUMBER_PATTERN } from 'src/app/shared/constants/forms.constants';
 import { MDBModalRef } from 'angular-bootstrap-md';
-import { ClientService } from 'src/app/services/clients.service';
+import { ClientService } from 'src/app/services/client.service';
 import { Alert } from 'src/app/shared/utils/alert.utils';
 import { City } from 'src/app/model/city';
 import { CitySelectorComponent } from 'src/app/components/city-selector/city-selector.component';
@@ -15,12 +15,12 @@ import { Modal } from 'src/app/shared/utils/modal.utils';
     selector: 'app-save-client',
     templateUrl: './save-client.component.html'
 })
-export class SaveClientComponent implements OnInit {
+export class SaveClientComponent implements OnInit, OnDestroy {
 
     action: Subject<boolean> = new Subject();
 
     formErrorMsgs = FORM_ERROR_MSGS;
-    contactInfoMsgs = CLIENT_MSGS;
+    clientMsgs = CLIENT_MSGS;
 
     submitted = false;
     clientForm: FormGroup;
@@ -49,9 +49,13 @@ export class SaveClientComponent implements OnInit {
             maximumAmount: new FormControl('', [
                 Validators.required, Validators.pattern(NUMBER_PATTERN)
             ]),
+            visitsPercenage: new FormControl('', [
+                Validators.required, Validators.pattern(NUMBER_PATTERN)
+            ]),
         });
 
         this.client && this.clientForm.patchValue(this.client);
+        this.client && this.fields.cityName.setValue(this.client.cityDTO.name);
     }
 
     ngOnDestroy() {
@@ -91,7 +95,7 @@ export class SaveClientComponent implements OnInit {
             const client: Client = this.clientForm.value;
             await this.clientService.save(client).toPromise();
 
-            this.alert.popSuccess(this.contactInfoMsgs.SUCCESS);
+            this.alert.popSuccess(this.clientMsgs.SAVE_SUCESS);
             this.close(true);
         } else {
             this.alert.popWarn(this.formErrorMsgs.FORM_ERRORS);

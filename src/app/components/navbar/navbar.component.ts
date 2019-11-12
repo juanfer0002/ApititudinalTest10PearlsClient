@@ -18,11 +18,11 @@ export class NavbarComponent implements OnInit {
     logout() {
 
         this.alert.showDialog({
-            title: "Logout",
-            body: "Are you sure you want to logout?",
+            title: 'Logout',
+            body: 'Are you sure you want to logout?',
             actions: [
-                { text: "Continue", value: true },
-                { text: "Cancel", value: false }
+                { text: 'Continue', value: true },
+                { text: 'Cancel', value: false }
             ]
         }).subscribe(async (shouldContinue: boolean) => {
 

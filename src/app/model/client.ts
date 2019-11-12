@@ -9,4 +9,5 @@ export interface Client {
     phone: string;
     maximumAmount: number;
     assignedCredit: number;
+    visitsPercenage: number;
 }

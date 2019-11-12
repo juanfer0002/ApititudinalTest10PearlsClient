@@ -26,9 +26,13 @@ import { LoadingScreenComponent } from './shared/components/loading-screen/loadi
 import { ClientsComponent } from './components/clients/clients.component';
 import { CountryService } from './services/country.service';
 import { DepartmentService } from './services/department.service';
-import { ClientService } from './services/clients.service';
+import { ClientService } from './services/client.service';
 import { SaveClientComponent } from './components/clients/modal/save-client/save-client.component';
 import { CitySelectorComponent } from './components/city-selector/city-selector.component';
+import { VisitsComponentComponent } from './components/visits-component/visits-component.component';
+import { SaveVisitComponent } from './components/visits-component/modal/save-visit/save-visit.component';
+import { VisitService } from './services/visit.service';
+import { RepresentativeService } from './services/representative.service';
 
 
 const NOTIFIER_CONFIG: NotifierOptions = {
@@ -48,7 +52,9 @@ const NOTIFIER_CONFIG: NotifierOptions = {
         LoadingScreenComponent,
         CitySelectorComponent,
         ClientsComponent,
-        SaveClientComponent
+        SaveClientComponent,
+        VisitsComponentComponent,
+        SaveVisitComponent
     ],
     imports: [
         BrowserModule,
@@ -64,6 +70,7 @@ const NOTIFIER_CONFIG: NotifierOptions = {
         AlertModalComponent,
         CitySelectorComponent,
         SaveClientComponent,
+        SaveVisitComponent,
     ],
     providers: [
         AuthService,
@@ -72,7 +79,9 @@ const NOTIFIER_CONFIG: NotifierOptions = {
         Modal,
         CountryService,
         DepartmentService,
+        RepresentativeService,
         ClientService,
+        VisitService,
         { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true },
     ],
     bootstrap: [AppComponent]

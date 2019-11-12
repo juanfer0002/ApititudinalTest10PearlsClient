@@ -14,7 +14,7 @@
                     <div class="col">
 
                         <div class="form-group">
-                            <label for="country">Country *</label>
+                            <label style="color: #757575;">Country *</label>
 
                             <select class="form-control" id="country" formControlName="country" mdbValidate
                                 [validateError]="submitted" (change)="onChangeCountry()">
@@ -34,7 +34,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label class="select-label">State *</label>
+                            <label style="color: #757575;">State *</label>
 
                             <select class="form-control" id="department" formControlName="department" mdbValidate
                                 [validateError]="submitted" (change)="onChangeDepartment()">
@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label class="select-label">City *</label>
+                            <label style="color: #757575;">City *</label>
 
                             <select class="form-control" id="city" formControlName="city" mdInput mdbValidate
                                 [validateError]="submitted">
@@ -74,7 +74,7 @@
         </div>
 
         <div class="modal-footer">
-            <button mdbBtn color="light" (click)="close()">Cancel</button>
+            <button mdbBtn color="light" type="button" (click)="close()">Cancel</button>
             <button mdbBtn color="success" type="submit">Select</button>
         </div>
 
